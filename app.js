@@ -8,6 +8,8 @@ const contactContent = "lorem ipsum, his interest was piqued by consectetur—a 
 let composeTitle ="";
 let composePost = "";
 let posts = [];
+let matchTitle ="";
+let Title ="";
 const app =express();
 app.set("view engine","ejs");
 app.use(express.static("public"));
@@ -17,6 +19,8 @@ app.get("/",function(req,res){
  res.render("home",{
     HOME:home, Content:homeStartingContent,posts:posts
  });  
+//  if(matchTitle ==Title)
+//   {console.log("Match found!");}
 //  console.log(posts.length);
  });
 app.get("/about",function(req,res){
@@ -32,12 +36,12 @@ app.get("/compose",function(req,res){
 app.post("/compose",function(req,res){
     const post ={cTitle: req.body.composeTitle
     ,cPost:req.body.composePost};
+    Title=req.body.composeTitle;
     posts.push(post);
    res.redirect("/");
 }) ; 
 app.get("/posts/:name",function(req,res){
-  console.log(req.params.name);
-
+  matchTitle =req.params.name;
   res.redirect("/");
 })
 
