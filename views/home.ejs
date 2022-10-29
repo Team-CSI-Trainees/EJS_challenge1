@@ -2,7 +2,6 @@
 <h1><%=HOME%></h1>
 <p><%=Content%></p>
 <% postss.forEach(function(postss){ %>
-   <h1> <p><%-postss.cTitle%></p></h1>
-    <p><%-postss.cPost%></p>
+<% console.log(postss.cTitle) %>
 <% });%>
 <%- include('partials/footer'); -%>
