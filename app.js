@@ -7,7 +7,7 @@ const aboutContent = "Duis aute irure dolor in reprehenderit in voluptate velit 
 const contactContent = "lorem ipsum, his interest was piqued by consectetur—a genuine, albeit rare, Latin word. Consulting a Latin dictionary led McCli";
 let composeTitle ="";
 let composePost = "";
-let postss = [];
+let posts = [];
 const app =express();
 app.set("view engine","ejs");
 app.use(express.static("public"));
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get("/",function(req,res){
     const home = "HOME";
  res.render("home",{
-    HOME:home, Content:homeStartingContent,postss:postss
+    HOME:home, Content:homeStartingContent,posts:posts
  });  
 //  console.log(posts.length);
  });
@@ -32,9 +32,14 @@ app.get("/compose",function(req,res){
 app.post("/compose",function(req,res){
     const post ={cTitle: req.body.composeTitle
     ,cPost:req.body.composePost};
-    postss.push(post);
+    posts.push(post);
    res.redirect("/");
 }) ; 
+app.get("/posts/:name",function(req,res){
+  console.log(req.params.name);
+
+  res.redirect("/");
+})
 
   
 
