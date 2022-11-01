@@ -45,7 +45,10 @@ button{
     color: #fff;
     border-radius: 5px;
     border: none;
-    width: 12rem;
-    height: 5rem;
+    width: 5rem;
+    height: 10rem;
     font-size: 2rem;
+}
+#composeButton{
+    width: 5rem;
 }

@@ -1,8 +1,11 @@
 <%- include('partials/header'); -%>
-<h1><%=HOME%></h1>
-<p><%=Content%></p>
-<% posts.forEach(function(posts){ %>
-   <h1> <p><%-posts.cTitle%></p></h1>
-    <p><%-posts.cPost%></p>
-<% });%>
+<h1>HOME</h1>
+<p><%= startingContent %></p>
+
+<% posts.forEach(function(element){ %>
+  <h1><%= element.cTitle; %></h1>
+  <p><%= element.limit %>
+     <a href="/posts/<%=element.cTitle%>">Read More</a>
+  </p>
+<% }); %>
 <%- include('partials/footer'); -%>
