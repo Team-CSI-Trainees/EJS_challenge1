@@ -16,18 +16,11 @@ const blogSchema = new mongoose.Schema({
   });
   const DataBlog =  mongoose.model("DataBlog",blogSchema);
 
-const DataBlog1 = new DataBlog({
-  content:"Titles" ,
-  blogPost:"Posts"
-})
-DataBlog.insertMany({DataBlog1},function(err){
-  if(err){
-    console.log(err);
-  }
-  else{
-    console.log(DataBlog1);
-  }
-})
+// const DataBlog1 = new DataBlog({
+//   content:"Titles" ,
+//   blogPost:"Posts"
+// })
+
 // const blogSchema = new mongoose.Schema({
 // content:{ type:String ,required:true},
 // blogPost:{type:String,required:true }
@@ -76,61 +69,50 @@ app.get("/compose", function(req, res){
   res.render("compose");
 });
 
-app.post("/compose", async(req,res) =>{
+app.post("/compose", function(req,res){
   const post = {
     cTitle: req.body.postTitle,
      cPost: req.body.postBody,
      limit:str(req.body.postBody).limit(100,"...").get()
    };
-   var blogdataTitle =  req.body.postTitle;
+   var blogdataTitle =  (req.body.postTitle);
    var blogdataPost =  req.body.postBody;
-
-  //  const blogData = new blog({
-  //   title:req.body.postTitle,
-  //   post:req.body.postBody
-  //  })
-  //  blog.insert({blogData}),function(err,blogs){
-  //   if(err){
-  //     console.log(err);
-  //   }
-  //   else{
-  //     console.log(blogs);
-  //   }
-   //}  
-//    try{
-//  await blogData.save()}catch(e){
-//   console.log(e);}
-  //  console.log(req.body);
-  
+   let BlogdataTitle =JSON.stringify(blogdataTitle)
+   let BlogdataPost =JSON.stringify(blogdataPost)
+   const postData = DataBlog({
+    content:{BlogdataTitle},
+    blogPost:{BlogdataPost}
+   });
+   
    posts.push(post);
-  //  const blogData = new blog({
-  //   title:blogdataTitle,
-  //   post:blogdataPost
-  //  });try{
-  //  await blogData.save();
-  //  }catch(err){
-  //   console.log(err);
-  //  }
-//    blog.insertMany({blogData})
-// console.log(req.body.postBody);
-// blog.find(function(err,blogs){  
-//  if(err)
-//    console.log(err);
-//  else
-//    console.log(blogs);
-// })
+
+   DataBlog.insertMany({postData},function(err){
+    if(err){
+      console.log(err);
+    }
+    else{ 
+      console.log("Database Connected");
+    }
+  });
+   postData.save()
+   console.log(postData);
+  DataBlog.find({},function(err,DataBlogSaved){
+    if(err)
+    {
+      console.log(err);
+    }
+    else{
+         console.log(DataBlogSaved);
+    }
+
+  })
+  
+
    res.redirect("/");
    
 });
 
 
-  // blog.find(function(err,blogs){  
-  //     if(err){
-  //       console.log(err);
-  //     }
-  //     else{
-  //       console.log(blogs);
-  //     };
 
 app.get("/posts/:Name", function(req, res){
   const matchTitle = _.lowerCase(req.params.Name);

@@ -5,7 +5,7 @@
 <% posts.forEach(function(element){ %>
   <h1><%= element.cTitle; %></h1>
   <p><%= element.limit %>
-     <a href="/posts/<%=element.cTitle%>">Read More</a>
+  <a href="/posts/<%=element.cTitle%>">Read More</a>
   </p>
 <% }); %>
 <%- include('partials/footer'); -%>
