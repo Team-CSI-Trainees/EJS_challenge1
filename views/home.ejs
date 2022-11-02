@@ -1,11 +1,15 @@
 <%- include('partials/header'); -%>
 <h1>HOME</h1>
 <p><%= startingContent %></p>
-
-<% posts.forEach(function(element){ %>
-  <h1><%= element.cTitle; %></h1>
-  <p><%= element.limit %>
-  <a href="/posts/<%=element.cTitle%>">Read More</a>
+<br>
+<br>
+<% posts.forEach(function(post){ %>
+  <p><h3 class="date"><%= post.createdDate %></h3> 
+  <h1><%= post.content %></h1>
+   <p><%= post.limit %> 
+  <a href="/posts/<%=post.content%>">Read More</a>
+  <br>
+  <br>
   </p>
-<% }); %>
+ <% }); %>
 <%- include('partials/footer'); -%>
