@@ -7,7 +7,6 @@ const _ = require('lodash');
 const str = require('@supercharge/strings');
 const mongoose =require('mongoose');
 // const bodyParser = require("body-parser");
-const express = require("express");
 const port =process.env.PORT || 3000;
 // const blog = require("../blogWebsite/model/data");                                                                                          
 mongoose.connect("mongodb+srv://root:root@cluster0.kklaiz3.mongodb.net/blogDB ",{useNewUrlParser:true}).then(()=>
@@ -29,7 +28,6 @@ const blogSchema = new mongoose.Schema({
   const Post =  mongoose.model("Post",blogSchema);
   //model to be stored in post 
 
-   const ReadPost =  mongoose.model("ReadPost",titleSchema);
 
 
 
