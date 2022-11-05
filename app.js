@@ -6,11 +6,11 @@ const ejs = require("ejs");
 const _ = require('lodash');
 const str = require('@supercharge/strings');
 const mongoose =require('mongoose');
-const { urlencoded } = require("body-parser");
-const e = require("express");
+// const bodyParser = require("body-parser");
+const app = require("express");
 const port =process.env.PORT || 3000;
 // const blog = require("../blogWebsite/model/data");                                                                                          
-mongoose.connect("mongodb://localhost:27017/blogDB ",{useNewUrlParser:true}).then(()=>
+mongoose.connect("mongodb+srv://root:root@cluster0.kklaiz3.mongodb.net/blogDB ",{useNewUrlParser:true}).then(()=>
 console.log("connection successfull"))
 .catch((err) => console.log(err) );
 var blogContent = ""
