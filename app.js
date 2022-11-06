@@ -81,9 +81,6 @@ app.post("/compose", function(req,res){
    });
     console.log(Post.findOne({},{content:1}));
    
-   const readPost = new ReadPost({
-       blogTitle:post.content
-   });
        post.save(function(err){
     if(err){
       console.log(err);
